@@ -3,7 +3,6 @@ import requests
 import json
 import subprocess
 import params
-
 from params import API_KEY, TARGET_ACCOUNT_NAME, INSERT_API_KEY
 
 accountId = 0
@@ -84,7 +83,7 @@ for account in accountData['accounts']:
             numUniqueTransactionQuery = "{ actor { account(id: "+str(accountId)+") { id } entity(guid: \""+appGUID+"\") { nrdbQuery(nrql: \"SELECT uniquecount(name) FROM Transaction\") { results } } } }"
             numUniqueTransaction = graphQL(numUniqueTransactionQuery)
             entityComplexityDict.update({"Unique Transactions" : numUniqueTransaction.get("entity").get("nrdbQuery").get("results")[0].get("uniqueCount.name")})
-            dict_clean (entityComplexityDict)
+            # dict_clean (entityComplexityDict)
 
             # Get language
             # getAPMLanguageQuery = "{ actor { account(id: "+str(accountId)+") { id } entity(guid: \""+appGUID+"\") } }"
